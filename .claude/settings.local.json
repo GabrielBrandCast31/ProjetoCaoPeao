@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:caopeao.netlify.app)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -sL https://caopeao.netlify.app/ -o caopeao.html)",
+      "Bash(curl -sL https://caopeao.netlify.app/assets/index-CgrCC_xi.js -o caopeao.js)",
+      "Bash(curl -sL https://caopeao.netlify.app/assets/index-BnfOFA50.css -o caopeao.css)",
+      "Bash(curl -s -o /dev/null -w \"favicon.ico: %{http_code}\\\\n\" https://caopeao.netlify.app/favicon.ico)",
+      "Bash(mkdir -p assets)",
+      "Bash(cp /tmp/caopeao.js assets/index-CgrCC_xi.js)",
+      "Bash(cp /tmp/caopeao.css assets/index-BnfOFA50.css)",
+      "Bash(cp /tmp/caopeao.html index.html)",
+      "Bash(python3 -m http.server 4173)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/assets/index-CgrCC_xi.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4173/assets/index-BnfOFA50.css)",
+      "Bash(kill %1)",
+      "Read(//Applications/Google Chrome.app/**)",
+      "Read(//Applications/**)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --no-sandbox --virtual-time-budget=8000 --dump-dom https://caopeao.netlify.app/)",
+      "Bash(echo \"exit: $?\")",
+      "Read(//tmp/**)"
+    ]
+  }
+}

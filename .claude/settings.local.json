@@ -24,7 +24,8 @@
       "Bash(node -e ' *)",
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --no-sandbox --window-size=1450,7000 --virtual-time-budget=12000 --dump-dom https://caopeao.netlify.app/)",
       "Bash(grep -oE '@layer [a-z, ]+\\\\{' assets/index-BnfOFA50.css)",
-      "Bash(node _capture.js)"
+      "Bash(node _capture.js)",
+      "Bash(node -e 'const h=require\\(\"fs\"\\).readFileSync\\(\"index.html\",\"utf8\"\\);console.log\\(h.slice\\(0,h.indexOf\\(\"</head>\"\\)+7\\)\\)')"
     ]
   }
 }

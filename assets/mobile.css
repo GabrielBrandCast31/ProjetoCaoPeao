@@ -1,0 +1,75 @@
+/* ============================================================
+   Otimizações de responsividade / mobile (media queries)
+   Carregado DEPOIS do CSS principal para poder ajustá-lo.
+   ============================================================ */
+
+/* 1) Evita rolagem horizontal causada pelos "blobs" decorativos de fundo
+      (elementos absolutos maiores que a viewport). */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Garante que mídia nunca estoure a largura da tela (sem alterar a altura,
+   para não interferir nas dimensões controladas por classes utilitárias). */
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* 2) Navegação por âncoras (#quem-somos, #serviços, etc.):
+      rolagem suave + compensação da altura do header fixo,
+      para a seção não ficar escondida atrás dele. */
+html {
+  scroll-behavior: smooth;
+}
+
+#tradicao,
+#servicos,
+#depoimentos,
+#contato {
+  scroll-margin-top: 230px; /* header fixo ~224px no desktop */
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 768px) {
+  #tradicao,
+  #servicos,
+  #depoimentos,
+  #contato {
+    scroll-margin-top: 185px; /* header ~174px */
+  }
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 640px) {
+  #tradicao,
+  #servicos,
+  #depoimentos,
+  #contato {
+    scroll-margin-top: 260px; /* header ~250px (barra de aviso quebra em linhas) */
+  }
+
+  /* A página é muito longa no celular: compacta o espaçamento vertical
+     das seções sem mexer no layout. */
+  .py-20 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .py-16 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Evita que palavras longas (e-mails, URLs) estourem a largura. */
+  p,
+  a,
+  span,
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: break-word;
+  }
+}

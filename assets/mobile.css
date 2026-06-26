@@ -30,7 +30,7 @@ html {
 #servicos,
 #depoimentos,
 #contato {
-  scroll-margin-top: 230px; /* header fixo ~224px no desktop */
+  scroll-margin-top: 120px; /* header fixo ~100px no desktop */
 }
 
 /* ---------- Tablet ---------- */
@@ -39,7 +39,7 @@ html {
   #servicos,
   #depoimentos,
   #contato {
-    scroll-margin-top: 185px; /* header ~174px */
+    scroll-margin-top: 150px; /* header ~133px */
   }
 }
 
@@ -49,7 +49,7 @@ html {
   #servicos,
   #depoimentos,
   #contato {
-    scroll-margin-top: 260px; /* header ~250px (barra de aviso quebra em linhas) */
+    scroll-margin-top: 145px; /* header ~126px */
   }
 
   /* A página é muito longa no celular: compacta o espaçamento vertical

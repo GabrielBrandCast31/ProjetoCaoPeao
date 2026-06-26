@@ -41,10 +41,13 @@
       "Bash(cp ~/Downloads/logosomentetexto.png assets/logo-caopeao.png)",
       "Bash(python3 -c \"import struct;d=open\\('assets/logo-caopeao.png','rb'\\).read\\(24\\);print\\('dimensões originais:',struct.unpack\\('>II',d[16:24]\\)\\)\")",
       "Bash(curl -s -o /dev/null -w \"sitemap.xml: %{http_code}\\\\n\" https://caopeao.netlify.app/sitemap.xml)",
-      "Bash(curl -s -o /dev/null -w \"robots.txt: %{http_code}\\\\n\" https://caopeao.netlify.app/robots.txt)"
+      "Bash(curl -s -o /dev/null -w \"robots.txt: %{http_code}\\\\n\" https://caopeao.netlify.app/robots.txt)",
+      "Bash(python3 -c \"import struct;d=open\\('bannerCaopeao.png','rb'\\).read\\(24\\);print\\('dimensões:',struct.unpack\\('>II',d[16:24]\\)\\)\")",
+      "Bash(python3 -c \"import struct;d=open\\('logocaopeaoicone.png','rb'\\).read\\(24\\);print\\('dimensões:',struct.unpack\\('>II',d[16:24]\\)\\)\")"
     ],
     "additionalDirectories": [
-      "/Users/brandcast03/Documents/Gabriel/Dev/Caopeao/node_modules"
+      "/Users/brandcast03/Documents/Gabriel/Dev/Caopeao/node_modules",
+      "/private/tmp"
     ]
   }
 }

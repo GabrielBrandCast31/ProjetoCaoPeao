@@ -1,0 +1,211 @@
+/* ============================================================
+   Melhorias de UI — polimento, micro-interações e menu mobile
+   100% CSS/JS próprio, sem dependências externas (preserva
+   desempenho e SEO). Carregado por último.
+   ============================================================ */
+
+/* ---------- 0) Dimensionamento do logo ----------
+   As classes utilitárias `w-auto`/`h-11` não existem neste build do
+   Tailwind, então a largura caía no atributo `width` e o logo ficava
+   esmagado. Aqui controlamos altura explícita + largura automática
+   (proporção preservada). */
+img[src$="logo-caopeao.png"] {
+  width: auto !important;
+}
+header img[src$="logo-caopeao.png"] {
+  height: 46px !important;
+}
+footer img[src$="logo-caopeao.png"] {
+  height: 54px !important;
+}
+@media (max-width: 640px) {
+  header img[src$="logo-caopeao.png"] {
+    height: 40px !important;
+  }
+}
+
+/* ---------- 1) Scrollbar com a cor da marca ---------- */
+html {
+  scrollbar-color: #dc2626 #f1f1f1; /* Firefox */
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f5;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc2626, #b91c1c);
+  border-radius: 10px;
+  border: 2px solid #f4f4f5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b91c1c, #991b1b);
+}
+
+/* ---------- 2) Foco visível (acessibilidade + polimento) ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- 3) Micro-interações suaves ---------- */
+/* Eleva levemente botões e cartões no hover, sem brigar com o design. */
+button:not(.cp-mm__close),
+a[class*="rounded"] {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+button:not(.cp-mm__close):hover {
+  filter: brightness(1.03);
+}
+
+/* ---------- 4) Animação de entrada ao rolar (progressive enhancement) ---------- */
+/* Só vale quando o JS está ativo (classe .js no <html>); sem JS,
+   tudo permanece visível — não afeta SEO nem usuários sem script. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 5) Menu mobile (overlay deslizante) ---------- */
+.cp-mm {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cp-mm.is-open {
+  opacity: 1;
+}
+.cp-mm__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(84%, 330px);
+  background: #ffffff;
+  box-shadow: -12px 0 48px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  padding: 4.5rem 1.5rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+.cp-mm.is-open .cp-mm__panel {
+  transform: translateX(0);
+}
+.cp-mm__brand {
+  height: 50px;
+  width: auto;
+  align-self: flex-start; /* evita o stretch do flex que esticava o logo */
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+.cp-mm__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  line-height: 1;
+  border: 0;
+  background: #f4f4f5;
+  border-radius: 50%;
+  color: #404040;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cp-mm__close:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.cp-mm__nav {
+  display: flex;
+  flex-direction: column;
+}
+.cp-mm__nav a {
+  padding: 0.95rem 0.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1f2937;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.cp-mm__nav a:hover {
+  color: #dc2626;
+  padding-left: 0.9rem;
+}
+.cp-mm__cta {
+  margin-top: 1.5rem;
+  text-align: center;
+  background: linear-gradient(90deg, #16a34a, #15803d);
+  color: #fff;
+  padding: 0.9rem 1rem;
+  border-radius: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+}
+.cp-mm__cta.is-secondary {
+  margin-top: 0.7rem;
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
+}
+.cp-mm__phone {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+.cp-mm__phone strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #1f2937;
+}
+/* esconde o menu mobile no desktop (segurança caso fique aberto) */
+@media (min-width: 768px) {
+  .cp-mm {
+    display: none;
+  }
+}
+
+/* ---------- 6) Respeita quem prefere menos movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

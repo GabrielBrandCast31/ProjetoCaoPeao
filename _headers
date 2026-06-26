@@ -1,0 +1,13 @@
+# Cache de longa duração para assets estáticos (Netlify lê este arquivo).
+# O HTML não é cacheado de forma agressiva, para que atualizações apareçam.
+
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.ico
+  Cache-Control: public, max-age=2592000
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
